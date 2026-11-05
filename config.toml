@@ -13,7 +13,7 @@ author_name = "Swarnit"
 author_title = "Software Developer"
 author_bio = "I write software, mainly focused on low-level systems, developer tools, and backends."
 email = "ghuleswarnit@gmail.com"
-github = "https://github.com"
+github = "https://github.com/swar09"
 linkedin = "https://linkedin.com"
 twitter = "https://x.com"
 
@@ -25,10 +25,10 @@ skills = [
 # Comments via GitHub Discussions (Giscus)
 [extra.giscus]
 enabled = true
-repo = "yourusername/portfolio"
-repo_id = "R_kgDOXXXXXXXX"
+repo = "swar09/swarnit"
+repo_id = "R_kgDOVkSSUQ"
 category = "General"
-category_id = "DIC_kwDOXXXXXXXX"
+category_id = "DIC_kwDOVkSSUc4DKd6D"
 mapping = "pathname"
 theme = "gruvbox_dark"
 reactions_enabled = "1"

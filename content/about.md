@@ -13,4 +13,4 @@ This site is where I write about projects I am working on and notes from debuggi
 
 ### Contact
 
-The easiest way to reach me is by email at [ghuleswarnit@gmail.com](mailto:ghuleswarnit@gmail.com). You can also find me on [GitHub](https://github.com).
+The easiest way to reach me is by email at [ghuleswarnit@gmail.com](mailto:ghuleswarnit@gmail.com). You can also find me on [GitHub](https://github.com/swar09).
