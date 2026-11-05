@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
 {% block title %}Blog | {{ config.title }}{% endblock title %}
-{% block description %}Engineering articles, architecture deep-dives, and tutorials.{% endblock description %}
+{% block description %}Notes and writing by {{ config.title }}.{% endblock description %}
 
 {% block content %}
 <div class="article-header">
   <h1 class="article-title">{{ section.title }}</h1>
-  <p class="hero-bio">{{ section.description | default(value="Thoughts on systems programming, design patterns, and engineering practices.") }}</p>
+  <p class="hero-bio">{{ section.description | default(value="Notes on things I am building or figuring out.") }}</p>
 </div>
 
 <div class="posts-list">

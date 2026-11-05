@@ -1,26 +1,24 @@
 +++
-title = "MicroKernel in Rust"
-description = "A minimal 64-bit x86 operating system kernel with cooperative multitasking, memory paging, and VGA text driver."
+title = "Microkernel in Rust"
+description = "A small 64-bit x86 kernel with memory paging, an interrupt table, and a VGA text driver."
 date = 2026-02-15
 weight = 1
 
 [extra]
-tech_stack = ["Rust", "x86_64", "QEMU", "Assembly", "Linker Scripts"]
+tech_stack = ["Rust", "x86_64", "QEMU"]
 github = "https://github.com/yourusername/microkernel-rust"
 demo = ""
 featured = true
 +++
 
-## Overview
+This is a bare-metal kernel written in Rust for the x86_64 architecture. It runs without the standard library (`#![no_std]`) and boots directly into 64-bit long mode.
 
-A standalone bare-metal operating system kernel written in **Rust** for the `x86_64` architecture. The kernel operates without standard library dependencies (`#![no_std]`) and boots directly via a custom bootloader into 64-bit long mode.
+### What it does
 
-### Highlights & Key Features
-
-* **VGA Buffer Driver**: Implemented safe, volatile memory writes to the VGA text buffer (`0xb8000`) with color styling and text wrapping.
-* **Interrupt Descriptor Table (IDT)**: Handled CPU exceptions, page faults, double faults, and hardware interrupts via the 8259 PIC.
-* **Memory Paging**: Configured 4-level page tables for virtual-to-physical memory translation with recursive paging.
-* **Heap Allocator**: Custom linked-list and fixed-size block memory allocators enabling dynamic Rust data structures (`Vec`, `Box`, `String`).
+* Writes text to the VGA buffer at memory address `0xb8000`.
+* Sets up an Interrupt Descriptor Table (IDT) to catch CPU exceptions like page faults and divide-by-zero errors.
+* Maps virtual to physical addresses through 4-level page tables.
+* Implements a simple heap allocator so the code can use collections like `Vec` and `String`.
 
 ```rust
 #![no_std]
@@ -30,11 +28,8 @@ use core::panic::PanicInfo;
 
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
-    println!("Hello from bare-metal Rust!");
-    
+    println!("Kernel booted.");
     microkernel::init();
-    
-    println!("Kernel initialized successfully.");
     microkernel::hlt_loop();
 }
 
@@ -45,6 +40,4 @@ fn panic(info: &PanicInfo) -> ! {
 }
 ```
 
-### Challenges Overcome
-
-Preventing kernel stack overflow during recursive double faults was resolved by setting up an **Interrupt Stack Table (IST)** in the Task State Segment (TSS) with an isolated emergency stack.
+Handling double faults was one of the harder parts: if a stack overflow happens, the CPU tries to push the exception frame to an already-broken stack, causing a triple fault and an immediate reboot. Setting up a dedicated stack in the Interrupt Stack Table fixed that.

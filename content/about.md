@@ -1,30 +1,16 @@
 +++
-title = "About Me"
-description = "Background, engineering philosophy, and experience."
+title = "About"
+description = "A bit about me, what I work on, and how to reach me."
 template = "page.html"
 
 [extra]
 comments = false
 +++
 
-## Hello, World!
+I am a software developer interested in operating systems, low-level tooling, and backends. Most of my projects involve Rust, Go, and Linux.
 
-I am an engineer focused on building robust, high-performance software systems. My interests lie at the intersection of **systems programming**, **distributed computing**, and **developer tooling**.
+This site is where I write about projects I am working on and notes from debugging or building things.
 
-### Background & Experience
+### Contact
 
-Over the years, I've worked across the full software lifecycle—from developing bare-metal kernel drivers to scaling high-throughput distributed microservices. I enjoy digging into the low-level mechanics of memory management, concurrency primitives, and network protocols.
-
-### What I Value
-
-* **Simplicity over cleverness**: Code that is readable, maintainable, and predictable.
-* **Performance with purpose**: Eliminating latency bottlenecks through smart data structures and cache-aware designs.
-* **Open Source**: Sharing knowledge through code, tutorials, and public repositories.
-
-### Get in Touch
-
-Feel free to connect or reach out if you'd like to collaborate or chat about interesting engineering challenges:
-
-* **GitHub**: [github.com/yourusername](https://github.com)
-* **Email**: [alex@example.com](mailto:alex@example.com)
-* **LinkedIn**: [linkedin.com/in/yourusername](https://linkedin.com)
+The easiest way to reach me is by email at [ghuleswarnit@gmail.com](mailto:ghuleswarnit@gmail.com). You can also find me on [GitHub](https://github.com).

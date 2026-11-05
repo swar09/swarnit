@@ -28,12 +28,12 @@
     <div class="hero-socials" style="margin-top: 1rem;">
       {% if page.extra.github %}
       <a href="{{ page.extra.github }}" target="_blank" rel="noopener" class="social-pill">
-        <span>Source Code ↗</span>
+        <span>Source code</span>
       </a>
       {% endif %}
       {% if page.extra.demo %}
       <a href="{{ page.extra.demo }}" target="_blank" rel="noopener" class="social-pill">
-        <span>Live Demo ↗</span>
+        <span>Live demo</span>
       </a>
       {% endif %}
     </div>
@@ -46,7 +46,7 @@
 
   {% if config.extra.giscus and config.extra.giscus.enabled and page.extra.comments | default(value=true) %}
   <section class="comments-section" style="margin-top: 3.5rem; border-top: 1px solid var(--border-subtle); padding-top: 2rem;">
-    <h2 class="section-title" style="margin-bottom: 1.5rem;">Discussion & Comments</h2>
+    <h2 class="section-title" style="margin-bottom: 1.5rem;">Comments</h2>
     <div class="giscus"></div>
     <script src="https://giscus.app/client.js"
             data-repo="{{ config.extra.giscus.repo }}"

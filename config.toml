@@ -1,50 +1,36 @@
-# The URL the site will be built for
 base_url = "https://example.com"
+title = "Swarnit"
+description = "Projects and writing by Swarnit."
 
-# Site metadata
-title = "Alex Developer"
-description = "Portfolio, engineering projects, and technical writeups."
-
-# Whether to compile Sass files
 compile_sass = false
-
-# Generate RSS feed
 generate_feeds = true
 
 [markdown.highlighting]
 theme = "gruvbox-dark-soft"
 
 [extra]
-# Author Information
-author_name = "Alex Dev"
-author_title = "Systems & Fullstack Engineer"
-author_bio = "I build fast, resilient software with a focus on systems programming, clean APIs, and open-source tooling."
-location = "San Francisco, CA"
-available_for_hire = true
-
-# Social Links
+author_name = "Swarnit"
+author_title = "Software Developer"
+author_bio = "I write software, mainly focused on low-level systems, developer tools, and backends."
+email = "ghuleswarnit@gmail.com"
 github = "https://github.com"
 linkedin = "https://linkedin.com"
 twitter = "https://x.com"
-email = "alex@example.com"
 
-# Skills categorized for the homepage
 skills = [
-    { category = "Languages", items = ["Rust", "Go", "TypeScript", "Python", "C/C++", "SQL"] },
-    { category = "Systems & Cloud", items = ["Linux", "Docker", "Kubernetes", "PostgreSQL", "Redis", "eBPF"] },
-    { category = "Web & Tools", items = ["Zola", "React", "Next.js", "Git", "GitHub Actions", "TailwindCSS"] },
+    { category = "Languages", items = ["Rust", "Go", "C", "Python", "TypeScript", "SQL"] },
+    { category = "Systems", items = ["Linux", "Docker", "PostgreSQL", "Redis", "Git"] },
 ]
 
-# GitHub Discussions-powered commenting via Giscus
+# Comments via GitHub Discussions (Giscus)
 [extra.giscus]
 enabled = true
-repo = "yourusername/portfolio"       # replace with your GitHub repository: username/repo
-repo_id = "R_kgDOXXXXXXXX"            # replace with your repo id from giscus.app
-category = "General"                  # replace with your Discussions category
-category_id = "DIC_kwDOXXXXXXXX"      # replace with your category id from giscus.app
-mapping = "pathname"                  # maps discussion to URL pathname
-theme = "gruvbox_dark"                # Gruvbox dark theme for Giscus
+repo = "yourusername/portfolio"
+repo_id = "R_kgDOXXXXXXXX"
+category = "General"
+category_id = "DIC_kwDOXXXXXXXX"
+mapping = "pathname"
+theme = "gruvbox_dark"
 reactions_enabled = "1"
-emit_metadata = "0"
 input_position = "bottom"
 lang = "en"

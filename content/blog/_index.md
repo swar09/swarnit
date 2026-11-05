@@ -1,6 +1,6 @@
 +++
 title = "Blog"
-description = "Engineering notes, deep-dives into systems programming, and architecture decisions."
+description = "Notes on things I am building or figuring out."
 template = "blog.html"
 sort_by = "date"
 insert_anchor_links = "heading"

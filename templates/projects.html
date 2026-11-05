@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
 {% block title %}Projects | {{ config.title }}{% endblock title %}
-{% block description %}Showcase of projects, open-source work, and software systems.{% endblock description %}
+{% block description %}Projects and code by {{ config.title }}.{% endblock description %}
 
 {% block content %}
 <div class="article-header">
   <h1 class="article-title">{{ section.title }}</h1>
-  <p class="hero-bio">{{ section.description | default(value="A collection of systems, open-source tools, and applications I've built.") }}</p>
+  <p class="hero-bio">{{ section.description | default(value="Things I've built.") }}</p>
 </div>
 
 <div class="projects-grid">
@@ -19,10 +19,10 @@
         </h2>
         <div class="project-links">
           {% if page.extra.github %}
-          <a href="{{ page.extra.github }}" target="_blank" rel="noopener">Code ↗</a>
+          <a href="{{ page.extra.github }}" target="_blank" rel="noopener">Code</a>
           {% endif %}
           {% if page.extra.demo %}
-          <a href="{{ page.extra.demo }}" target="_blank" rel="noopener">Demo ↗</a>
+          <a href="{{ page.extra.demo }}" target="_blank" rel="noopener">Demo</a>
           {% endif %}
         </div>
       </div>

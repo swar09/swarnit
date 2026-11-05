@@ -1,28 +1,18 @@
 +++
-title = "Why I Chose Zola for My Engineering Portfolio"
-description = "How migrating away from heavy node-based frameworks to a single Rust binary gave me sub-second builds and zero maintenance overhead."
+title = "Why I chose Zola for this site"
+description = "Notes on setting up a static site without a JavaScript build chain."
 date = 2026-03-01
 +++
 
-Static site generators have come a long way. For years, the default choice for modern web portfolios was Gatsby, Next.js, or Astro. While those tools are great for dynamic web applications, using a massive JavaScript toolchain for a documentation or portfolio site often brings unnecessary complexity:
+I wanted a site to put up project notes and writeups without dealing with a heavy build setup.
 
-* Gigabytes of `node_modules`
-* Frequent dependency churn and breaking package updates
-* Heavy client-side JavaScript bundles for simple textual content
+A lot of modern web tools pull in hundreds of megabytes of dependencies in `node_modules` just to render plain Markdown files to HTML. Over time, dependencies drift, build scripts fail on newer Node versions, and keeping the site working becomes its own chore.
 
-### The Elegance of Zola
+Zola is a single executable written in Rust. It takes a folder of Markdown files and Tera templates, and writes out static HTML and CSS.
 
-[Zola](https://www.getzola.org/) is a single, self-contained binary written in Rust. It does not require installing Node.js, Python, or Ruby.
+A few things that made it practical for me:
 
-```bash
-# Installing and serving a site with Zola
-zola init my-portfolio
-zola serve
-```
-
-### Key Advantages
-
-1. **Lightning-Fast Builds**: Compiling 100+ pages of Markdown takes less than 50 milliseconds.
-2. **Tera Templating**: Powerful layout inheritance inspired by Jinja2 and Django.
-3. **Built-in Syntax Highlighting**: Powered by `syntect`, so no client-side `Prism.js` is needed.
-4. **$0 Hosting**: Generates pure static HTML and CSS that deploys effortlessly to Cloudflare Pages or GitHub Pages.
+* One binary to install, with no external package manager needed.
+* Builds take less than a second.
+* Syntax highlighting runs during the build, so pages do not need client-side highlighting scripts.
+* The output is plain HTML, which deploys to GitHub Pages or Cloudflare Pages with zero hosting cost.

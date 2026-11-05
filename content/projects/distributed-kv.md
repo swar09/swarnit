@@ -1,35 +1,32 @@
 +++
-title = "Raft Distributed Key-Value Store"
-description = "A fault-tolerant, replicated key-value storage engine implementing the Raft consensus algorithm with gRPC communication."
+title = "Raft Key-Value Store"
+description = "A replicated key-value store using the Raft consensus protocol in Go."
 date = 2026-01-20
 weight = 2
 
 [extra]
-tech_stack = ["Go", "Raft", "gRPC", "Protobuf", "BoltDB"]
+tech_stack = ["Go", "Raft", "gRPC"]
 github = "https://github.com/yourusername/raft-kv"
 demo = ""
 featured = true
 +++
 
-## Overview
+A distributed key-value store where nodes coordinate state through the Raft consensus algorithm. The cluster keeps working as long as a majority of nodes are reachable.
 
-A strongly consistent, distributed key-value storage engine engineered to survive network partitions and node crashes. The system coordinates state transitions across an $N$-node cluster using the **Raft consensus algorithm**.
+### Components
 
-### Core Architecture
-
-1. **Leader Election**: Randomized election timeouts, term numbers, and vote quorum mechanics.
-2. **Log Replication**: AppendEntries RPCs with log consistency checks and committed index updates.
-3. **Log Compaction & Snapshots**: Automated snapshotting prevents log storage unbounded growth and accelerates slow node recovery.
-4. **Client API**: gRPC endpoints supporting `Get`, `Put`, `Delete`, and linearizable read requests.
+* **Leader election**: Nodes use randomized timeouts to trigger elections when heartbeats drop.
+* **Log replication**: The leader sends log entries to followers, waiting for a quorum before committing.
+* **Compaction**: Old log entries are written to snapshots on disk so the log does not grow indefinitely.
+* **gRPC interface**: Exposes basic `Get`, `Put`, and `Delete` calls.
 
 ```go
-// Example state machine apply loop
 func (kv *KVServer) applyLoop() {
     for msg := range kv.applyCh {
         if msg.CommandValid {
             op := msg.Command.(Op)
             kv.mu.Lock()
-            kv.executeOperation(op)
+            kv.applyOperation(op)
             kv.mu.Unlock()
         }
     }
