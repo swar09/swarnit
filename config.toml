@@ -34,3 +34,17 @@ skills = [
     { category = "Systems & Cloud", items = ["Linux", "Docker", "Kubernetes", "PostgreSQL", "Redis", "eBPF"] },
     { category = "Web & Tools", items = ["Zola", "React", "Next.js", "Git", "GitHub Actions", "TailwindCSS"] },
 ]
+
+# GitHub Discussions-powered commenting via Giscus
+[extra.giscus]
+enabled = true
+repo = "yourusername/portfolio"       # replace with your GitHub repository: username/repo
+repo_id = "R_kgDOXXXXXXXX"            # replace with your repo id from giscus.app
+category = "General"                  # replace with your Discussions category
+category_id = "DIC_kwDOXXXXXXXX"      # replace with your category id from giscus.app
+mapping = "pathname"                  # maps discussion to URL pathname
+theme = "gruvbox_dark"                # Gruvbox dark theme for Giscus
+reactions_enabled = "1"
+emit_metadata = "0"
+input_position = "bottom"
+lang = "en"

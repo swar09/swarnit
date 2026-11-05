@@ -43,5 +43,26 @@
   <div class="content-body">
     {{ page.content | safe }}
   </div>
+
+  {% if config.extra.giscus and config.extra.giscus.enabled and page.extra.comments | default(value=true) %}
+  <section class="comments-section" style="margin-top: 3.5rem; border-top: 1px solid var(--border-subtle); padding-top: 2rem;">
+    <h2 class="section-title" style="margin-bottom: 1.5rem;">Discussion & Comments</h2>
+    <div class="giscus"></div>
+    <script src="https://giscus.app/client.js"
+            data-repo="{{ config.extra.giscus.repo }}"
+            data-repo-id="{{ config.extra.giscus.repo_id }}"
+            data-category="{{ config.extra.giscus.category }}"
+            data-category-id="{{ config.extra.giscus.category_id }}"
+            data-mapping="{{ config.extra.giscus.mapping | default(value='pathname') }}"
+            data-reactions-enabled="{{ config.extra.giscus.reactions_enabled | default(value='1') }}"
+            data-emit-metadata="{{ config.extra.giscus.emit_metadata | default(value='0') }}"
+            data-input-position="{{ config.extra.giscus.input_position | default(value='bottom') }}"
+            data-theme="{{ config.extra.giscus.theme | default(value='gruvbox_dark') }}"
+            data-lang="{{ config.extra.giscus.lang | default(value='en') }}"
+            crossorigin="anonymous"
+            async>
+    </script>
+  </section>
+  {% endif %}
 </article>
 {% endblock content %}

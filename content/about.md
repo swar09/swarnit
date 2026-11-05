@@ -2,6 +2,9 @@
 title = "About Me"
 description = "Background, engineering philosophy, and experience."
 template = "page.html"
+
+[extra]
+comments = false
 +++
 
 ## Hello, World!
