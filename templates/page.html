@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }} | {{ config.title }}{% endblock title %}
+{% block description %}{{ page.description | default(value=page.summary | default(value=config.description)) }}{% endblock description %}
+
+{% block content %}
+<article class="page-container">
+  <header class="article-header">
+    <h1 class="article-title">{{ page.title }}</h1>
+    
+    <div class="article-meta">
+      {% if page.date %}
+      <time datetime="{{ page.date }}">{{ page.date | date(format="%B %d, %Y") }}</time>
+      <span>•</span>
+      <span>{{ page.reading_time }} min read</span>
+      {% endif %}
+    </div>
+
+    {% if page.extra.tech_stack %}
+    <div class="project-tags" style="margin-top: 1rem;">
+      {% for tech in page.extra.tech_stack %}
+      <span class="tag-pill">{{ tech }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if page.extra.github or page.extra.demo %}
+    <div class="hero-socials" style="margin-top: 1rem;">
+      {% if page.extra.github %}
+      <a href="{{ page.extra.github }}" target="_blank" rel="noopener" class="social-pill">
+        <span>Source Code ↗</span>
+      </a>
+      {% endif %}
+      {% if page.extra.demo %}
+      <a href="{{ page.extra.demo }}" target="_blank" rel="noopener" class="social-pill">
+        <span>Live Demo ↗</span>
+      </a>
+      {% endif %}
+    </div>
+    {% endif %}
+  </header>
+
+  <div class="content-body">
+    {{ page.content | safe }}
+  </div>
+</article>
+{% endblock content %}

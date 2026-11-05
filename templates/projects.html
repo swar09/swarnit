@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Projects | {{ config.title }}{% endblock title %}
+{% block description %}Showcase of projects, open-source work, and software systems.{% endblock description %}
+
+{% block content %}
+<div class="article-header">
+  <h1 class="article-title">{{ section.title }}</h1>
+  <p class="hero-bio">{{ section.description | default(value="A collection of systems, open-source tools, and applications I've built.") }}</p>
+</div>
+
+<div class="projects-grid">
+  {% for page in section.pages %}
+  <article class="project-card">
+    <div>
+      <div class="project-header">
+        <h2 class="project-title">
+          <a href="{{ page.permalink }}">{{ page.title }}</a>
+        </h2>
+        <div class="project-links">
+          {% if page.extra.github %}
+          <a href="{{ page.extra.github }}" target="_blank" rel="noopener">Code ↗</a>
+          {% endif %}
+          {% if page.extra.demo %}
+          <a href="{{ page.extra.demo }}" target="_blank" rel="noopener">Demo ↗</a>
+          {% endif %}
+        </div>
+      </div>
+      <p class="project-description">{{ page.description | default(value="") }}</p>
+    </div>
+
+    {% if page.extra.tech_stack %}
+    <div class="project-tags">
+      {% for tech in page.extra.tech_stack %}
+      <span class="tag-pill">{{ tech }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </article>
+  {% endfor %}
+</div>
+{% endblock content %}

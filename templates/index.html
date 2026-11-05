@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section" id="top">
+  {% if config.extra.available_for_hire %}
+  <div class="status-badge">
+    <span class="status-dot"></span>
+    Available for new opportunities
+  </div>
+  {% endif %}
+
+  <h1 class="hero-title">
+    Hi, I'm <span class="highlight">{{ config.extra.author_name }}</span>
+  </h1>
+  <div class="hero-subtitle">{{ config.extra.author_title }}</div>
+  <p class="hero-bio">
+    {{ config.extra.author_bio }}
+  </p>
+
+  <div class="hero-socials">
+    {% if config.extra.github %}
+    <a href="{{ config.extra.github }}" target="_blank" rel="noopener" class="social-pill">
+      <span>GitHub ↗</span>
+    </a>
+    {% endif %}
+    {% if config.extra.linkedin %}
+    <a href="{{ config.extra.linkedin }}" target="_blank" rel="noopener" class="social-pill">
+      <span>LinkedIn ↗</span>
+    </a>
+    {% endif %}
+    {% if config.extra.twitter %}
+    <a href="{{ config.extra.twitter }}" target="_blank" rel="noopener" class="social-pill">
+      <span>Twitter / X ↗</span>
+    </a>
+    {% endif %}
+    {% if config.extra.email %}
+    <a href="mailto:{{ config.extra.email }}" class="social-pill">
+      <span>Email ✉</span>
+    </a>
+    {% endif %}
+  </div>
+</section>
+
+<!-- Featured Projects -->
+{% set projects_section = get_section(path="projects/_index.md") %}
+{% if projects_section.pages %}
+<section class="section-block">
+  <div class="section-header">
+    <h2 class="section-title">Featured Projects</h2>
+    <a href="{{ get_url(path='projects/_index.md') }}" class="section-view-all">View all projects →</a>
+  </div>
+
+  <div class="projects-grid">
+    {% for page in projects_section.pages %}
+      {% if loop.index <= 3 %}
+      <article class="project-card">
+        <div>
+          <div class="project-header">
+            <h3 class="project-title">
+              <a href="{{ page.permalink }}">{{ page.title }}</a>
+            </h3>
+            <div class="project-links">
+              {% if page.extra.github %}
+              <a href="{{ page.extra.github }}" target="_blank" rel="noopener">Code ↗</a>
+              {% endif %}
+              {% if page.extra.demo %}
+              <a href="{{ page.extra.demo }}" target="_blank" rel="noopener">Demo ↗</a>
+              {% endif %}
+            </div>
+          </div>
+          <p class="project-description">{{ page.description | default(value=page.summary | default(value="")) }}</p>
+        </div>
+
+        {% if page.extra.tech_stack %}
+        <div class="project-tags">
+          {% for tech in page.extra.tech_stack %}
+          <span class="tag-pill">{{ tech }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </article>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<!-- Latest Blog Posts -->
+{% set blog_section = get_section(path="blog/_index.md") %}
+{% if blog_section.pages %}
+<section class="section-block">
+  <div class="section-header">
+    <h2 class="section-title">Latest Articles</h2>
+    <a href="{{ get_url(path='blog/_index.md') }}" class="section-view-all">All articles →</a>
+  </div>
+
+  <div class="posts-list">
+    {% for page in blog_section.pages %}
+      {% if loop.index <= 3 %}
+      <article class="post-item">
+        <div class="post-meta">
+          <time datetime="{{ page.date }}">{{ page.date | date(format="%b %d, %Y") }}</time>
+          <span>•</span>
+          <span>{{ page.reading_time }} min read</span>
+        </div>
+        <h3 class="post-title">
+          <a href="{{ page.permalink }}">{{ page.title }}</a>
+        </h3>
+        {% if page.description %}
+        <p class="post-excerpt">{{ page.description }}</p>
+        {% endif %}
+      </article>
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<!-- Technical Skills -->
+{% if config.extra.skills %}
+<section class="section-block">
+  <div class="section-header">
+    <h2 class="section-title">Technical Skills</h2>
+  </div>
+
+  <div class="skills-container">
+    {% for category in config.extra.skills %}
+    <div class="skill-category">
+      <div class="skill-cat-title">{{ category.category }}</div>
+      <div class="skill-items">
+        {% for item in category.items %}
+        <span class="skill-badge">{{ item }}</span>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% endblock content %}

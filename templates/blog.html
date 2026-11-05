@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Blog | {{ config.title }}{% endblock title %}
+{% block description %}Engineering articles, architecture deep-dives, and tutorials.{% endblock description %}
+
+{% block content %}
+<div class="article-header">
+  <h1 class="article-title">{{ section.title }}</h1>
+  <p class="hero-bio">{{ section.description | default(value="Thoughts on systems programming, design patterns, and engineering practices.") }}</p>
+</div>
+
+<div class="posts-list">
+  {% for page in section.pages %}
+  <article class="post-item">
+    <div class="post-meta">
+      <time datetime="{{ page.date }}">{{ page.date | date(format="%b %d, %Y") }}</time>
+      <span>•</span>
+      <span>{{ page.reading_time }} min read</span>
+    </div>
+    <h2 class="post-title">
+      <a href="{{ page.permalink }}">{{ page.title }}</a>
+    </h2>
+    {% if page.description %}
+    <p class="post-excerpt">{{ page.description }}</p>
+    {% endif %}
+  </article>
+  {% endfor %}
+</div>
+{% endblock content %}

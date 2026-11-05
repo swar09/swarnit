@@ -1,0 +1,36 @@
+# The URL the site will be built for
+base_url = "https://example.com"
+
+# Site metadata
+title = "Alex Developer"
+description = "Portfolio, engineering projects, and technical writeups."
+
+# Whether to compile Sass files
+compile_sass = false
+
+# Generate RSS feed
+generate_feeds = true
+
+[markdown.highlighting]
+theme = "gruvbox-dark-soft"
+
+[extra]
+# Author Information
+author_name = "Alex Dev"
+author_title = "Systems & Fullstack Engineer"
+author_bio = "I build fast, resilient software with a focus on systems programming, clean APIs, and open-source tooling."
+location = "San Francisco, CA"
+available_for_hire = true
+
+# Social Links
+github = "https://github.com"
+linkedin = "https://linkedin.com"
+twitter = "https://x.com"
+email = "alex@example.com"
+
+# Skills categorized for the homepage
+skills = [
+    { category = "Languages", items = ["Rust", "Go", "TypeScript", "Python", "C/C++", "SQL"] },
+    { category = "Systems & Cloud", items = ["Linux", "Docker", "Kubernetes", "PostgreSQL", "Redis", "eBPF"] },
+    { category = "Web & Tools", items = ["Zola", "React", "Next.js", "Git", "GitHub Actions", "TailwindCSS"] },
+]
